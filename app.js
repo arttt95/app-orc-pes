@@ -85,17 +85,46 @@ function cadastrarDespesa () {
     )
 
     if (despesa.validarDados()) {
+
+        //resetModal()
         
         bd.gravar(despesa)
         //dialog de sucesso
-        $('#sucessoGravacao').modal('show')
+        $('#modalRegistraDespesa').modal('show')
+        document.getElementById('texto').className += 'modal-header text-success'
+        document.getElementById('tituloModal').innerText = 'Registro inserido com sucesso'
+        document.getElementById('modalBody').innerText = 'Os dados da despesa foram inseridos no sistema.'
+        document.getElementById('botaoVoltar').className += 'btn btn-success'
+        document.getElementById('botaoVoltar').innerText = 'Voltar'
+        
 
     } else {
 
+        //resetModal()
+
         //dialog de erro
-        $('#erroGravacao').modal('show')
+        $('#modalRegistraDespesa').modal('show')
+        document.getElementById('texto').className += 'modal-header text-danger'
+        document.getElementById('tituloModal').innerText = 'Erro na inclusão do registro'
+        document.getElementById('modalBody').innerText = 'Existem campos obrigatórios que não foram preenchidos.'
+        document.getElementById('botaoVoltar').className += 'btn btn-danger'
+        document.getElementById('botaoVoltar').innerText = 'Voltar e corrigir'
 
     }
     
 
 }
+
+/*
+function resetModal () {
+
+    // Remover classes de sucesso/erro
+    document.getElementById('texto').className = ''
+    document.getElementById(botaoVoltar).className = ''
+
+    // Resetar o texto do modal
+    document.getElementById('tituloModal').innerText = ''
+    document.getElementById('modalBody').innerText = ''
+    document.getElementById(botaoVoltar).innerText = ''
+
+}*/
