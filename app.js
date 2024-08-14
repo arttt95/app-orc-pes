@@ -123,12 +123,15 @@ function cadastrarDespesa () {
         //resetModal()
         
         bd.gravar(despesa)
+
+        limparFormulario()
+
         //dialog de sucesso
         $('#modalRegistraDespesa').modal('show')
-        document.getElementById('texto').className += 'modal-header text-success'
+        document.getElementById('texto').className = 'modal-header text-success'
         document.getElementById('tituloModal').innerText = 'Registro inserido com sucesso'
         document.getElementById('modalBody').innerText = 'Os dados da despesa foram inseridos no sistema.'
-        document.getElementById('botaoVoltar').className += 'btn btn-success'
+        document.getElementById('botaoVoltar').className = 'btn btn-success'
         document.getElementById('botaoVoltar').innerText = 'Voltar'
         
 
@@ -138,10 +141,10 @@ function cadastrarDespesa () {
 
         //dialog de erro
         $('#modalRegistraDespesa').modal('show')
-        document.getElementById('texto').className += 'modal-header text-danger'
+        document.getElementById('texto').className = 'modal-header text-danger'
         document.getElementById('tituloModal').innerText = 'Erro na inclusão do registro'
         document.getElementById('modalBody').innerText = 'Existem campos obrigatórios que não foram preenchidos.'
-        document.getElementById('botaoVoltar').className += 'btn btn-danger'
+        document.getElementById('botaoVoltar').className = 'btn btn-danger'
         document.getElementById('botaoVoltar').innerText = 'Voltar e corrigir'
 
     }
@@ -152,6 +155,13 @@ function cadastrarDespesa () {
 /*
 function resetModal () {
 
+    let texto = document.getElementById('texto')
+    let botaoVoltar = document.getElementById('botaoVoltar')
+    let tituloModal = document.getElementById('tituloModal')
+    let modalBody = document.getElementById('modalBody')
+    */
+
+    /*
     // Remover classes de sucesso/erro
     document.getElementById('texto').className = ''
     document.getElementById(botaoVoltar).className = ''
@@ -160,8 +170,25 @@ function resetModal () {
     document.getElementById('tituloModal').innerText = ''
     document.getElementById('modalBody').innerText = ''
     document.getElementById(botaoVoltar).innerText = ''
+    */
+    /*
+    // Verificando e resetando os elementos
+    if (texto) {
+        texto.className = '';
+    }
+    if (botaoVoltar) {
+        botaoVoltar.className = 'btn';
+        botaoVoltar.innerText = '';
+    }
+    if (tituloModal) {
+        tituloModal.innerText = '';
+    }
+    if (modalBody) {
+        modalBody.innerText = '';
+    }
 
-}*/
+}
+*/
 
 function carregaListaDespesas () {
 
@@ -205,5 +232,23 @@ function carregaListaDespesas () {
         linha.insertCell(3).innerHTML = d.valor
 
     })
+
+}
+
+function limparFormulario () {
+
+   let ano = document.getElementById('ano')
+   let mes = document.getElementById('mes')
+   let dia = document.getElementById('dia')
+   let tipo = document.getElementById('tipo')
+   let descricao = document.getElementById('descricao')
+   let valor = document.getElementById('valor')
+
+   ano.value = ''
+   mes.value = ''
+   dia.value = ''
+   tipo.value = ''
+   descricao.value = ''
+   valor.value = ''
 
 }
