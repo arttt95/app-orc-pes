@@ -59,6 +59,40 @@ class Bd {
     
     }
 
+    recuperarTodosRegistros () {
+
+        // Array de despesas
+
+        let despesas = []
+
+        let id = localStorage.getItem('id')
+
+        // Recuperar todas as despesas cadastradas em localStorage
+        for (let i = 1; i <= id; i++) {
+
+            // Recuperar a despesa
+            let despesa = JSON.parse(localStorage.getItem(i))
+
+            // Testar if null não incluir no array 'despesas'
+
+            if (despesa === null) {
+
+                continue
+
+            } else {
+
+                despesas.push(despesa)
+
+            }
+
+            
+
+        }
+
+        return despesas
+
+    }
+
 }
 
 let bd = new Bd()
@@ -128,3 +162,13 @@ function resetModal () {
     document.getElementById(botaoVoltar).innerText = ''
 
 }*/
+
+function carregaListaDespesas () {
+
+    let despesas = []
+
+    despesas = bd.recuperarTodosRegistros()
+
+    console.log(despesas)
+
+}
