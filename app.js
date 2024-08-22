@@ -154,7 +154,7 @@ class Bd {
 
         }
 
-        console.log(despesasFiltradas)
+        return despesasFiltradas
 
 
     }
@@ -256,14 +256,17 @@ function resetModal () {
 }
 */
 
-function carregaListaDespesas () {
+function carregaListaDespesas (despesas = [], filtro = false) {
 
-    let despesas = []
+    if (despesas.length == 0 && filtro == false) {
 
-    despesas = bd.recuperarTodosRegistros()
+        despesas = bd.recuperarTodosRegistros()
+
+    }
 
     // Selecionando o elemento tbody da tabela
     let listaDespesas = document.getElementById('listaDespesas')
+    listaDespesas.innerHTML = ''
 
     // Percorrer o array 'despesas' listando cada despesa de forma dinâmica
     despesas.forEach (function (d) {
@@ -330,9 +333,13 @@ function pesquisarDespesa () {
 
     let despesa = new Despesa(ano, mes, dia, tipo, descricao, valor)
 
-    bd.pesquisar(despesa)
+    let despesas = bd.pesquisar(despesa)
+    
+    carregaListaDespesas(despesas, true)
 
 }
+
+
 
 /* Exemplos de Array filters
 
