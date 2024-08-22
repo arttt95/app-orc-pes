@@ -95,7 +95,67 @@ class Bd {
 
     pesquisar (despesa) {
 
+        let despesasFiltradas = []
+
+        despesasFiltradas = this.recuperarTodosRegistros()
+
         console.log(despesa)
+        console.log(despesasFiltradas)
+
+        // Ano
+        if (despesa.ano != "") {
+
+            console.log('Filtro de ano acionado!')
+            despesasFiltradas = despesasFiltradas.filter(d => d.ano == despesa.ano)
+
+        }
+
+        // Mês
+        if (despesa.mes != "") {
+
+            console.log('Filtro de mes acionado!')
+            despesasFiltradas = despesasFiltradas.filter(d => d.mes == despesa.mes)
+
+        }
+
+
+        // Dia
+        if (despesa.dia != "") {
+
+            console.log('Filtro de dia acionado!')
+            despesasFiltradas = despesasFiltradas.filter(d => d.dia == despesa.dia)
+
+        }
+
+
+        // Tipo
+        if (despesa.tipo != "") {
+
+            console.log('Filtro de tipo acionado!')
+            despesasFiltradas = despesasFiltradas.filter(d => d.tipo == despesa.tipo)
+
+        }
+
+
+        // Descrição
+        if (despesa.descricao != "") {
+
+            console.log('Filtro de descricao acionado!')
+            despesasFiltradas = despesasFiltradas.filter(d => d.descricao == despesa.descricao)
+
+        }
+
+
+        // Valor
+        if (despesa.valor != "") {
+
+            console.log('Filtro de valor acionado!')
+            despesasFiltradas = despesasFiltradas.filter(d => d.valor == despesa.valor)
+
+        }
+
+        console.log(despesasFiltradas)
+
 
     }
 
@@ -273,3 +333,18 @@ function pesquisarDespesa () {
     bd.pesquisar(despesa)
 
 }
+
+/* Exemplos de Array filters
+
+** Utilizando arrow function, utilizamos o retorno implicito e como só recebemos um parâmetro, também suprimimos a atribuição através do método function
+
+funcionarios.filter( f => f.salario < 2000 ).filter( f => f.status == 'ativo' )
+
+** os dois métodos
+
+funcionarios.filter(function (f) { return f.salario < 2000 }).filter(f => f.status == 'ativo' )
+
+** apenas o método convencional
+
+funcionarios.filter(function (f) { return f.salario < 2000 }).filter(function (f) { return f.status == 'ativo' })
+*/
